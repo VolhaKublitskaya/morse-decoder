@@ -39,6 +39,26 @@ const MORSE_TABLE = {
 
 function decode(expr) {
     // write your solution here
+
+
+    let result = "";
+    let codeletter;
+
+
+    for (let i = 0; i < expr.length; i += 10) {
+
+        let codeword = expr.slice(i, i + 10);
+
+        let first = codeword.replace(/10/g, ".");
+
+        let second = first.replace(/11/g, "-");
+
+        codeletter = second.replace(/0/g, "");
+
+        result += MORSE_TABLE[codeletter] || " ";
+    }
+    return result;
+
 }
 
 module.exports = {
